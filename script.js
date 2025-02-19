@@ -8,7 +8,7 @@ btnSearch.addEventListener("click", async function () {
     const movies = await getMovies(inputForm);
     updateUI(movies);
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     const mContainer = document.querySelector(".movie-container");
     mContainer.innerHTML = `<h4 class="text-body-secondary">${err}</h4>`;
     // alert(err);
@@ -16,7 +16,7 @@ btnSearch.addEventListener("click", async function () {
 });
 
 function getMovies(inputForm) {
-  return fetch(`http://www.omdbapi.com/?apikey=eb5eb652&s=${inputForm.value}`)
+  return fetch(`https://www.omdbapi.com/?apikey=eb5eb652&s=${inputForm.value}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -41,7 +41,7 @@ function updateUI(movies) {
 }
 
 function getMovieDetail(imdbid) {
-  return fetch(`http://www.omdbapi.com/?apikey=eb5eb652&i=${imdbid}`)
+  return fetch(`https://www.omdbapi.com/?apikey=eb5eb652&i=${imdbid}`)
     .then((response) => response.json())
     .then((response) => response);
 }
